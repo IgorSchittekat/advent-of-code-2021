@@ -1,7 +1,7 @@
 # Advent Of Code 2021
 
 
-| Day           | Status | [Python](python) | [Lua](lua)
+| Day           | Status | [Python](Python) | [Lua](Lua)
 | ------------- |:------:|:----------------:|:---------:|
 | [Day 01][d01] | X X | X X | X X |
 | [Day 02][d02] | X X | X X | X X |
