@@ -6,7 +6,7 @@
 | [Day 01][d01] | X X | X X | X X |
 | [Day 02][d02] | X X | X X | X X |
 | [Day 03][d03] | X X | X X |  |
-| [Day 04][d04] |  |  |  |
+| [Day 04][d04] | X X | X X |  |
 | [Day 05][d05] |  |  |  |
 | [Day 06][d06] |  |  |  |
 | [Day 07][d07] |  |  |  |
