@@ -49,7 +49,7 @@ def parse_line(line):
     return int(x1), int(y1), int(x2), int(y2)
 
 
-def day5_1():
+def part1():
     lines = read_input()
     field = Field()
     for line in lines:
@@ -59,10 +59,15 @@ def day5_1():
     return field.count_twos()
 
 
-def day5_2():
+def part2():
     lines = read_input()
     field = Field()
     for line in lines:
         x1, y1, x2, y2 = parse_line(line)
         field.add_line(x1, y1, x2, y2)
     return field.count_twos()
+
+
+if __name__ == '__main__':
+    print(part1())
+    print(part2())

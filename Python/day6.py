@@ -22,10 +22,14 @@ def growth(days):
     return sum(count.values())
 
 
-def day6_1():
+def part1():
     return growth(80)
 
 
-def day6_2():
+def part2():
     return growth(256)
 
+
+if __name__ == '__main__':
+    print(part1())
+    print(part2())

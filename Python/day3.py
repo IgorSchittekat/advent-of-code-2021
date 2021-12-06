@@ -21,7 +21,7 @@ def get_zeros_and_ones(arr):
     return zeros, ones
 
 
-def day3_1():
+def part1():
     lines = read_input()
     n_row, n_col = lines.shape
     zeros, ones = get_zeros_and_ones(lines)
@@ -75,7 +75,10 @@ def co2():
     return lines.dot(1 << np.arange(lines.shape[-1] - 1, -1, -1))[0]
 
 
-def day3_2():
+def part2():
     return oxygen() * co2()
 
 
+if __name__ == '__main__':
+    print(part1())
+    print(part2())

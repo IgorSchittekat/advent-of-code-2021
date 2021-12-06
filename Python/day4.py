@@ -58,7 +58,7 @@ def read_input():
         return input, bingos
 
 
-def day4_1():
+def part1():
     input, bingos = read_input()
     score = []
     for number in input:
@@ -71,7 +71,7 @@ def day4_1():
     return max(score)
 
 
-def day4_2():
+def part2():
     input, bingos = read_input()
     victories = np.zeros(len(bingos))
     last_victory = None
@@ -86,3 +86,7 @@ def day4_2():
         if np.all(victories == 1):
             return last_victory.get_score() * number
 
+
+if __name__ == '__main__':
+    print(part1())
+    print(part2())

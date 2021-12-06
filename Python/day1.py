@@ -5,7 +5,7 @@ def read_input():
         return [int(line.rstrip()) for line in lines]
 
 
-def day1_1():
+def part1():
     lines = read_input()
     prev = lines[0]
     counter = 0
@@ -16,7 +16,7 @@ def day1_1():
     return counter
 
 
-def day1_2():
+def part2():
     lines = read_input()
     prev = sum(lines[:3])
     counter = 0
@@ -26,3 +26,8 @@ def day1_2():
             counter += 1
         prev = number
     return counter
+
+
+if __name__ == '__main__':
+    print(part1())
+    print(part2())

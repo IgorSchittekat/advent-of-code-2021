@@ -6,7 +6,7 @@ def read_input():
         return [line.rstrip().split(' ') for line in lines]
 
 
-def day2_1():
+def part1():
     lines = read_input()
     depth = 0
     horizontal = 0
@@ -21,7 +21,7 @@ def day2_1():
     return depth * horizontal
 
 
-def day2_2():
+def part2():
     lines = read_input()
     depth = 0
     horizontal = 0
@@ -36,3 +36,8 @@ def day2_2():
         elif direction == 'down':
             aim += amount
     return depth * horizontal
+
+
+if __name__ == '__main__':
+    print(part1())
+    print(part2())
