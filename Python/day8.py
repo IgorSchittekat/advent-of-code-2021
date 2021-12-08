@@ -54,29 +54,10 @@ class Display:
                 self.dict[9] = num
 
     def decode(self):
-        total = 0
+        total = ""
         for number in self.output:
-            if number == self.dict[0]:
-                total = total * 10
-            if number == self.dict[1]:
-                total = total * 10 + 1
-            if number == self.dict[2]:
-                total = total * 10 + 2
-            if number == self.dict[3]:
-                total = total * 10 + 3
-            if number == self.dict[4]:
-                total = total * 10 + 4
-            if number == self.dict[5]:
-                total = total * 10 + 5
-            if number == self.dict[6]:
-                total = total * 10 + 6
-            if number == self.dict[7]:
-                total = total * 10 + 7
-            if number == self.dict[8]:
-                total = total * 10 + 8
-            if number == self.dict[9]:
-                total = total * 10 + 9
-        return total
+            total += str(list(self.dict.keys())[list(self.dict.values()).index(number)])
+        return int(total)
 
 
 def read_input():
