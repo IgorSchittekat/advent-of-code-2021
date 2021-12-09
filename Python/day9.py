@@ -1,11 +1,12 @@
 import numpy as np
+from aocd import get_data
+from utils import *
+
+data = get_data(year=2021, day=9)
 
 
 def read_input():
-    with open('input9.txt', 'r') as file:
-        lines = file.readlines()
-        lines = [[int(char) for char in line.rstrip()] for line in lines]
-        return np.array(lines)
+    return np.array([[int(char) for char in line] for line in data.splitlines()])
 
 
 def find_lowpoint(i, j, lines):

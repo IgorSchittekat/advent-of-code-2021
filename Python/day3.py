@@ -1,11 +1,12 @@
 import numpy as np
+from aocd import get_data
+from utils import *
+
+data = get_data(year=2021, day=3)
 
 
 def read_input():
-    with open('input3.txt', 'r') as file:
-        lines = file.readlines()
-        lines = [[char for char in line.rstrip()] for line in lines]
-        return np.array(lines)
+    return np.array([[char for char in line.rstrip()] for line in data.splitlines()])
 
 
 def get_zeros_and_ones(arr):
@@ -56,7 +57,7 @@ def oxygen():
             lines = filter(lines, i, '0')
         else:
             lines = filter(lines, i, '1')
-    lines = lines.astype(np.int)
+    lines = lines.astype(int)
     return lines.dot(1 << np.arange(lines.shape[-1] - 1, -1, -1))[0]
 
 
@@ -71,7 +72,7 @@ def co2():
             lines = filter(lines, i, '0')
         else:
             lines = filter(lines, i, '1')
-    lines = lines.astype(np.int)
+    lines = lines.astype(int)
     return lines.dot(1 << np.arange(lines.shape[-1] - 1, -1, -1))[0]
 
 

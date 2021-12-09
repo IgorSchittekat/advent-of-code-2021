@@ -1,14 +1,12 @@
 from collections import defaultdict, Counter
+from aocd import get_data
+from utils import *
 
-
-def read_input():
-    with open('input6.txt', 'r') as file:
-        line = file.read()
-        return [int(number) for number in line.rstrip().split(',')]
+data = get_data(year=2021, day=6)
 
 
 def growth(days):
-    line = read_input()
+    line = ints(data)
     count = dict(Counter(line))
     for day in range(days):
         new_count = defaultdict(int)

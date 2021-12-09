@@ -1,73 +1,11 @@
+from aocd import get_data
+from utils import *
 
-
-class Display:
-    def __init__(self, line):
-        self.lenfive = []
-        self.lensix = []
-        self.dict = dict()
-        for number in line[:10]:
-            if len(number) == 2:
-                self.dict[1] = set(number)
-            elif len(number) == 3:
-                self.dict[7] = set(number)
-            elif len(number) == 4:
-                self.dict[4] = set(number)
-            elif len(number) == 7:
-                self.dict[8] = set(number)
-            elif len(number) == 5:
-                self.lenfive.append(set(number))
-            elif len(number) == 6:
-                self.lensix.append(set(number))
-        self.output = [set(number) for number in line[-4:]]
-
-    def solve(self):
-        """
-          ttt
-        tl   tr
-        tl   tr
-          mmm
-        bl   br
-        bl   br
-          bbb
-        """
-        t = self.dict[7] - self.dict[1]
-        tlm = self.dict[4] - self.dict[1]
-        ttlm = set(list(tlm) + list(t))
-        for num in self.lenfive:
-            if ttlm.issubset(num):
-                self.dict[5] = num
-        tr = self.dict[1] - self.dict[5]
-        br = self.dict[1] - tr
-        for num in self.lenfive:
-            if tr.issubset(num) and not br.issubset(num):
-                self.dict[2] = num
-            if tr.issubset(num) and br.issubset(num):
-                self.dict[3] = num
-        tl = self.dict[4] - self.dict[3]
-        m = tlm - tl
-        for num in self.lensix:
-            if not m.issubset(num):
-                self.dict[0] = num
-            elif not tr.issubset(num):
-                self.dict[6] = num
-            else:
-                self.dict[9] = num
-
-    def decode(self):
-        total = ""
-        for number in self.output:
-            total += str(list(self.dict.keys())[list(self.dict.values()).index(number)])
-        return int(total)
-
-
-def read_input():
-    with open('input8.txt', 'r') as file:
-        lines = file.readlines()
-        return [line.rstrip().split(' ') for line in lines]
+data = get_data(year=2021, day=8)
 
 
 def part1():
-    outputs = [line[-4:] for line in read_input()]
+    outputs = [line[-4:] for line in splitlines(data, ' ')]
     counter = 0
     for output in outputs:
         for digit in output:
@@ -77,12 +15,39 @@ def part1():
 
 
 def part2():
-    lines = read_input()
+    lines = splitlines(data, ' ')
     total = 0
     for line in lines:
-        disp = Display(line)
-        disp.solve()
-        total += disp.decode()
+        mapping = dict()
+        numbers = sorted(line[:10], key=len)
+        mapping[1] = set(numbers[0])
+        mapping[7] = set(numbers[1])
+        mapping[4] = set(numbers[2])
+        mapping[8] = set(numbers[9])
+
+        for number in numbers[6:9]:
+            number = set(number)
+            if mapping[4].issubset(number):
+                mapping[9] = number
+            elif mapping[1].issubset(number):
+                mapping[0] = number
+            else:
+                mapping[6] = number
+
+        for number in numbers[3:6]:
+            number = set(number)
+            if mapping[1].issubset(number):
+                mapping[3] = number
+            elif number.issubset(mapping[6]):
+                mapping[5] = number
+            else:
+                mapping[2] = number
+
+        output = ""
+        for number in line[-4:]:
+            number = set(number)
+            output += str(list(mapping.keys())[list(mapping.values()).index(number)])
+        total += int(output)
     return total
 
 

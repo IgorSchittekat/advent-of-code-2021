@@ -1,4 +1,8 @@
 import numpy as np
+from aocd import get_data
+from utils import *
+
+data = get_data(year=2021, day=5)
 
 
 class Field:
@@ -36,13 +40,6 @@ class Field:
         return counter
 
 
-def read_input():
-    with open('input5.txt', 'r') as file:
-        lines = file.readlines()
-        lines = [line.rstrip().split(' -> ') for line in lines]
-        return lines
-
-
 def parse_line(line):
     x1, y1 = line[0].split(',')
     x2, y2 = line[1].split(',')
@@ -50,7 +47,7 @@ def parse_line(line):
 
 
 def part1():
-    lines = read_input()
+    lines = splitlines(data, ' -> ')
     field = Field()
     for line in lines:
         x1, y1, x2, y2 = parse_line(line)
@@ -60,7 +57,7 @@ def part1():
 
 
 def part2():
-    lines = read_input()
+    lines = splitlines(data, ' -> ')
     field = Field()
     for line in lines:
         x1, y1, x2, y2 = parse_line(line)

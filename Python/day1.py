@@ -1,15 +1,14 @@
+from aocd import get_data
+from utils import *
 
-def read_input():
-    with open('input1.txt', 'r') as file:
-        lines = file.readlines()
-        return [int(line.rstrip()) for line in lines]
+data = get_data(year=2021, day=1)
 
 
 def part1():
-    lines = read_input()
-    prev = lines[0]
+    numbers = ints(data)
+    prev = numbers[0]
     counter = 0
-    for number in lines[1:]:
+    for number in numbers[1:]:
         if number > prev:
             counter += 1
         prev = number
@@ -17,11 +16,11 @@ def part1():
 
 
 def part2():
-    lines = read_input()
-    prev = sum(lines[:3])
+    numbers = ints(data)
+    prev = sum(numbers[:3])
     counter = 0
-    for i in range(1, len(lines) - 2):
-        number = sum(lines[i:i+3])
+    for i in range(1, len(numbers) - 2):
+        number = sum(numbers[i:i+3])
         if number > prev:
             counter += 1
         prev = number

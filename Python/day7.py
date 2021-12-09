@@ -1,14 +1,12 @@
 import math
+from aocd import get_data
+from utils import *
 
-
-def read_input():
-    with open('input7.txt', 'r') as file:
-        line = file.read()
-        return [int(number) for number in line.rstrip().split(',')]
+data = get_data(year=2021, day=7)
 
 
 def part1():
-    positions = read_input()
+    positions = ints(data)
     smallest = math.inf
     for i in range(max(positions)):
         total = 0
@@ -19,7 +17,7 @@ def part1():
 
 
 def part2():
-    positions = read_input()
+    positions = ints(data)
     val = [0]
     for i in range(1, max(positions) + 1):
         val.append(val[i - 1] + i)

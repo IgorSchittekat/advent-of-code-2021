@@ -1,4 +1,8 @@
 import numpy as np
+from aocd import get_data
+from utils import *
+
+data = get_data(year=2021, day=4)
 
 
 class Bingo:
@@ -42,20 +46,17 @@ class Bingo:
 
 
 def read_input():
-    with open('input4.txt', 'r') as file:
-        lines = file.readlines()
-        lines = [line.rstrip() for line in lines]
-        input = [int(number) for number in lines[0].split(',')]
-        bingos = []
-        bingo = Bingo()
-        for line in lines[2:]:
-            if line == '':
-                bingos.append(bingo)
-                bingo = Bingo()
-            else:
-                bingo.add_line([int(number) for number in line.split(' ') if number != ''])
-        bingos.append(bingo)
-        return input, bingos
+    input = ints(data.splitlines()[0])
+    bingos = []
+    bingo = Bingo()
+    for line in data.splitlines()[2:]:
+        if line == '':
+            bingos.append(bingo)
+            bingo = Bingo()
+        else:
+            bingo.add_line(ints(line))
+    bingos.append(bingo)
+    return input, bingos
 
 
 def part1():

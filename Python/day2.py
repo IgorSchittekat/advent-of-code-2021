@@ -1,13 +1,11 @@
+from aocd import get_data
+from utils import *
 
-
-def read_input():
-    with open('input2.txt', 'r') as file:
-        lines = file.readlines()
-        return [line.rstrip().split(' ') for line in lines]
+data = get_data(year=2021, day=2)
 
 
 def part1():
-    lines = read_input()
+    lines = splitlines(data, ' ')
     depth = 0
     horizontal = 0
     for direction, amount in lines:
@@ -22,7 +20,7 @@ def part1():
 
 
 def part2():
-    lines = read_input()
+    lines = splitlines(data, ' ')
     depth = 0
     horizontal = 0
     aim = 0
