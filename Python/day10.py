@@ -8,7 +8,7 @@ def part1():
     total = 0
     for line in data.splitlines():
         stack = []
-        match = {'(': ')', '[': ']', '{':'}', '<':'>'}
+        match = {'(': ')', '[': ']', '{': '}', '<': '>'}
         points = {')': 3, ']': 57, '}': 1197, '>': 25137}
         for char in line:
             if char in match.keys():
