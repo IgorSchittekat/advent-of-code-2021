@@ -710,7 +710,8 @@ def points_to_grid(points, sub_min=True, flip=True):
 
 def print_grid(grid):
     for line in grid:
-        print(*line, sep="")
+        print(*line, end="")
+    print()
 
 
 def fst(x):
