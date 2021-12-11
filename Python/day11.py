@@ -27,7 +27,7 @@ def flash_all(grid):
 def part1():
     grid = np.array([[int(number) for number in line] for line in data.splitlines()])
     total_flashes = 0
-    for step in range(100):
+    for _ in range(100):
         grid += 1
         total_flashes += np.count_nonzero(flash_all(grid))
         grid[grid > 9] = 0
