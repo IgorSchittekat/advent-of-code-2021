@@ -51,7 +51,7 @@ def part2():
     matrix = matrix.astype(str)
     matrix[matrix == '0'] = ' '
     matrix[matrix == '1'] = '#'
-    print_grid(matrix)
+    return matrix
 
 
 if __name__ == '__main__':
@@ -77,4 +77,4 @@ if __name__ == '__main__':
 fold along y=7
 fold along x=5"""
     print(part1())
-    part2()
+    print_grid(part2())
