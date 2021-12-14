@@ -1,4 +1,4 @@
-# Advent Of Code 2021
+# Advent Of Code 2021 🎄
 
 
 | Day           | Status | [Python](Python) | [Lua](Lua)
@@ -16,7 +16,7 @@
 | [Day 11][d11] | X X | X X |  |
 | [Day 12][d12] | X X | X X |  |
 | [Day 13][d13] | X X | X X |  |
-| [Day 14][d14] |  |  |  |
+| [Day 14][d14] | X X | X X |  |
 | [Day 15][d15] |  |  |  |
 | [Day 16][d16] |  |  |  |
 | [Day 17][d17] |  |  |  |
