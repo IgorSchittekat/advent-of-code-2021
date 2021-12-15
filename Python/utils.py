@@ -269,7 +269,7 @@ def path_from_parents(parents: typing.Dict[T, T], end: T) -> typing.List[T]:
     return out
 
 
-def dijkstra(
+def dijkstra_orig(
         from_node: T,
         expand: typing.Callable[[T], typing.Iterable[typing.Tuple[int, T]]],
         heuristic: typing.Optional[typing.Callable[[T], int]] = None,
@@ -309,7 +309,31 @@ def dijkstra(
                 g_values[new_node] = new_g
                 heapq.heappush(todo, (new_g + heuristic(new_node), new_g, new_node))
 
-    return (g_values, parents)
+    return g_values, parents
+
+
+def dijkstra(graph, start):
+    """Visit all nodes and calculate the shortest paths to each from start"""
+    queue = [(0, start)]
+    distances = {start: 0}
+    visited = set()
+
+    while queue:
+        _, node = heapq.heappop(queue)  # (distance, node), ignore distance
+        if node in visited:
+            continue
+        visited.add(node)
+        dist = distances[node]
+
+        for neighbour, neighbour_dist in graph[node].items():
+            if neighbour in visited:
+                continue
+            neighbour_dist += dist
+            if neighbour_dist < distances.get(neighbour, float('inf')):
+                heapq.heappush(queue, (neighbour_dist, neighbour))
+                distances[neighbour] = neighbour_dist
+
+    return distances
 
 
 def a_star(
@@ -318,7 +342,7 @@ def a_star(
         expand: typing.Callable[[T], typing.Iterable[typing.Tuple[int, T]]],
         heuristic: typing.Optional[typing.Callable[[T], int]] = None,
 ) -> typing.Tuple[int, typing.List[T]]:
-    g_values, parents = dijkstra(from_node, to_node=to_node, expand=expand, heuristic=heuristic)
+    g_values, parents = dijkstra_orig(from_node, to_node=to_node, expand=expand, heuristic=heuristic)
     if to_node not in g_values:
         raise Exception("couldn't reach to_node")
     return (g_values[to_node], path_from_parents(parents, to_node))
@@ -802,6 +826,8 @@ def matexp(a, k):
         a = matmat(a, a)
         k //= 2
     return out
+
+
 # endregion
 
 
