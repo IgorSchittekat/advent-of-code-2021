@@ -1,3 +1,5 @@
+import math
+
 from aocd import get_data
 from utils import *
 
@@ -24,8 +26,8 @@ def hit_target(v_x, v_y):
 def part1():
     min_x, max_x, min_y, max_y = ints(data)
     all_high = 0
-    for x in range(max_x + 1):
-        for y in range(200):
+    for x in range(int(math.sqrt(min_x)) - 1, max_x + 1):
+        for y in range(min_y, - min_y):
             hit, highest = hit_target(x, y)
             if hit:
                 all_high = max(all_high, highest)
@@ -35,8 +37,8 @@ def part1():
 def part2():
     min_x, max_x, min_y, max_y = ints(data)
     total = 0
-    for x in range(max_x + 1):
-        for y in range(min_y, 200):
+    for x in range(int(math.sqrt(min_x)) - 1, max_x + 1):
+        for y in range(min_y, - min_y):
             hit, highest = hit_target(x, y)
             if hit:
                 total += 1
